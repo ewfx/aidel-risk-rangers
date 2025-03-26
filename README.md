@@ -14,7 +14,7 @@
 ---
 
 ## 🎯 Introduction
-A brief overview of your project and its purpose. Mention which problem statement are your attempting to solve. Keep it concise and engaging.
+We are presenting one of the possible solutions to detect anomalies in financial transactions with the help FlowScope methods on static dataset.
 
 ## 🎥 Demo
 🔗 [Live Demo](#) (if applicable)  
@@ -24,37 +24,43 @@ A brief overview of your project and its purpose. Mention which problem statemen
 ![Screenshot 1](link-to-image)
 
 ## 💡 Inspiration
-What inspired you to create this project? Describe the problem you're solving.
+Research on journals and internet resources on various machine learning models used in financial fraud detection. Models that matches our dataset are explored against its alternatives to determine the efficiency and drawbacks.
 
 ## ⚙️ What It Does
-Explain the key features and functionalities of your project.
+Our solution does assumption on sample dataset and its features. Our solution includes feature engineering to determine the relativeness of feature details present in the dataset. Based on the suggestion, we can pass the more valued features to model to determine the anomalies. Thus reducing the effort on processing featuring that are not required 
 
 ## 🛠️ How We Built It
-Briefly outline the technologies, frameworks, and tools used in development.
+Feature engineering is built on catBoost gradient descent along with optuna to automate the fine tuning of hyperparameters. Relevant features are then analysed through the principles of FlowScope model.
+
+Temporal aggregation - aggregate transactions by company per week
+
+Behavioral baselining - compute rolling statistics (mean & std) over a 4-week window.
+
+Anomaly detection - use rolling z-scores and a threshold to flag anomalies
+
+Multi-feature modelling - considered multiple features: count, total, avg amount, and transaction types.
+
 
 ## 🚧 Challenges We Faced
-Describe the major technical or non-technical challenges your team encountered.
+Computational resources are high to perform feature engineering, it was using higher memory and disk space. Executed them on Google Collab server running on T4-GPU device.
+
+Higher version of Numpy > 1.23.5 had compatibility issues with catBoost libraries. It is mandatory to use Numpy version 1.23.5.
+
+FlowScope neural network model efficiency on synthetic dataset is less efficient, hence we explored the methods of FlowScope and implemented on our dataset
+
 
 ## 🏃 How to Run
-1. Clone the repository  
-   ```sh
-   git clone https://github.com/your-repo.git
-   ```
-2. Install dependencies  
-   ```sh
-   npm install  # or pip install -r requirements.txt (for Python)
-   ```
-3. Run the project  
-   ```sh
-   npm start  # or python app.py
-   ```
+1. Uploaded syntactic dataset. Provide python code recognizes only this dataset. Install the pre-requisites packages.
+2. Ensure packages catBoost, Numpy, optuna were installed on the environment.
+3. Execute the blocks. 
+4. Python script generates csv file that contains company name, risk score and confidence score
+
 
 ## 🏗️ Tech Stack
-- 🔹 Frontend: React / Vue / Angular
-- 🔹 Backend: Node.js / FastAPI / Django
-- 🔹 Database: PostgreSQL / Firebase
-- 🔹 Other: OpenAI API / Twilio / Stripe
+- 🔹 Backend: Python 
+
 
 ## 👥 Team
-- **Your Name** - [GitHub](#) | [LinkedIn](#)
-- **Teammate 2** - [GitHub](#) | [LinkedIn](#)
+- **Kakumani, Venkata Suneel** - [GitHub](#) | [LinkedIn](#)
+- **Chandrasekaran, Skandakumar** - [GitHub](#) | [LinkedIn](#)
+- **Anandam, Madhu** - [GitHub](#) | [LinkedIn](#)
